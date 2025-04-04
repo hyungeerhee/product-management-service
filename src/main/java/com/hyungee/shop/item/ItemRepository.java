@@ -1,4 +1,4 @@
-package com.hyungee.shop;
+package com.hyungee.shop.item;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

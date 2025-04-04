@@ -1,4 +1,4 @@
-package com.hyungee.shop;
+package com.hyungee.shop.item;
 
 import jakarta.persistence.*;
 import lombok.Getter;
