@@ -60,5 +60,10 @@ public class ItemController {
         return "redirect:/list";
     }
 
+    @GetMapping("/test1")
+    String test1() {
+        System.out.println("요청들어옴");
+        return "redirect:/list";
+    }
 
 }
