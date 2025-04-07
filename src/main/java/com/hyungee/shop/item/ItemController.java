@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -61,8 +62,8 @@ public class ItemController {
     }
 
     @GetMapping("/test1")
-    String test1() {
-        System.out.println("요청들어옴");
+    String test1(@RequestParam String name) {
+        System.out.println(name);
         return "redirect:/list";
     }
 
