@@ -42,7 +42,6 @@ public class ItemController {
         } else {
             return "redirect:/list";
         }
-
     }
 
     @GetMapping("/edit/{id}")
