@@ -58,6 +58,8 @@ public class MemberController {
         if(auth == null || auth.getPrincipal().equals("anonymousUser")){
             return "login.html";
         }
+        MyUserDetailsService.CustomUser result = (MyUserDetailsService.CustomUser)auth.getPrincipal();
+        System.out.println(result.displayName);
         return "mypage.html";
     }
 }
