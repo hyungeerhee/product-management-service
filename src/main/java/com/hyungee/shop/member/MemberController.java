@@ -1,7 +1,9 @@
 package com.hyungee.shop.member;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -16,8 +18,11 @@ public class MemberController {
 
 
     @GetMapping("/register")
-    public String register() {
-        return "register.html";
+    public String register(Authentication auth) {
+        if(auth == null || auth.getPrincipal().equals("anonymousUser")){
+            return "register.html";
+        }
+        return "redirect:/list";
     }
 
     @PostMapping("/member")
@@ -50,9 +55,9 @@ public class MemberController {
 
     @GetMapping("/my-page")
     public String myPage(Authentication auth) {
-        System.out.println(auth);
-        System.out.println(auth.getName());
-        System.out.println(auth.isAuthenticated());
+        if(auth == null || auth.getPrincipal().equals("anonymousUser")){
+            return "login.html";
+        }
         return "mypage.html";
     }
 }

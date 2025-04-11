@@ -11,5 +11,11 @@
 <body>
 <div th:replace="~{nav.html :: navbar}"></div>
 <h1>마이페이지</h1>
+<div sec:authentication="principal"></div>
+<div sec:authentication="principal.username"></div>
+<div sec:authorize="hasAuthority('일반유저')">
+    <h4>이 유저는 일반유저 권한임</h4>
+</div>
+
 </body>
 </html>
