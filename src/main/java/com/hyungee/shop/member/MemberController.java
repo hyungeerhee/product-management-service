@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequiredArgsConstructor
@@ -61,5 +62,12 @@ public class MemberController {
         MyUserDetailsService.CustomUser result = (MyUserDetailsService.CustomUser)auth.getPrincipal();
         System.out.println(result.displayName);
         return "mypage.html";
+    }
+
+    @GetMapping("/user/1")
+    @ResponseBody
+    public Member user() {
+        var a = memberRepository.findById(1L);
+        return a.get();
     }
 }
