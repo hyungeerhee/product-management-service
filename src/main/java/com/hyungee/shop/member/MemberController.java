@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
+
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
@@ -66,8 +68,17 @@ public class MemberController {
 
     @GetMapping("/user/1")
     @ResponseBody
-    public Member user() {
+    public Data getUser() {
         var a = memberRepository.findById(1L);
-        return a.get();
+        var data = new Data();
+        data.username = a.get().getUsername();
+        data.displayName = a.get().getDisplayName();
+        return data;
     }
 }
+
+class Data {
+    public String username;
+    public String displayName;
+}
+
